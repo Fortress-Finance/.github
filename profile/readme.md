@@ -16,65 +16,6 @@ Our strategy is designed to capture the long-term value appreciation of the thre
 4. **Sustainable Yield**: Automated yield generation through DeFi protocols
 5. **Transparent Operations**: Open-source, auditable, and community-controlled
 
-## Project Structure
-
-This repository contains two main components:
-
-- **`contracts/`** - Smart contracts and deployment scripts
-- **`dapp/`** - Next.js frontend application for interacting with the vault
-
-## Quick Start
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-- Git
-
-### Installation
-
-```bash
-# Clone the repository
-git clone <repository-url>
-cd fortress-finance
-
-# Install all dependencies (contracts + dapp)
-npm run install:all
-```
-
-### Development
-
-```bash
-# Start both contracts and dapp in development mode
-npm run dev:contracts  # In one terminal
-npm run dev:dapp      # In another terminal
-
-# Or run both concurrently (if you have concurrently installed)
-npx concurrently "npm run dev:contracts" "npm run dev:dapp"
-```
-
-### Building
-
-```bash
-# Build everything
-npm run build:all
-
-# Build individual components
-npm run build:contracts
-npm run build:dapp
-```
-
-### Testing
-
-```bash
-# Run all tests
-npm run test:all
-
-# Run individual test suites
-npm run test:contracts
-npm run test:dapp
-```
-
 ## Portfolio Strategy
 
 ### Investment Model: ETH-Only Simplified Access
@@ -514,4 +455,5 @@ We welcome contributions from the community! Here's how you can get involved:
 - **Best Practices**: Security and development best practices
 
 For questions or support, please open an issue on GitHub or join our Discord community.
+
 
