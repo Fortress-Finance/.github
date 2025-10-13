@@ -10,28 +10,36 @@ Fortress Finance is built on the principle that **diversification is the corners
 
 Our strategy is designed to capture the long-term value appreciation of the three most established and promising blockchain networks while providing users with:
 
-1. **Simplified Access**: Single ETH investment for diversified exposure
+1. **Simplified Access**: Single ETH investment and redemption for diversified exposure
 2. **Risk Mitigation**: Diversification across three major blockchain ecosystems
 3. **Community Governance**: DAO-driven decision making for protocol evolution
-4. **Sustainable Yield**: Automated yield generation through DeFi protocols
+4. **Sustainable Yield**: Automated yield generation that directly bolsters FORT token value
 5. **Transparent Operations**: Open-source, auditable, and community-controlled
+
+## Project Structure
+
+This repository contains two main components:
+
+- **`contracts/`** - Smart contracts and deployment scripts
+- **`dapp/`** - Next.js frontend application for interacting with the vault
+
 
 ## Portfolio Strategy
 
 ### Investment Model: ETH-Only Simplified Access
 
-Fortress Finance revolutionizes DeFi investment by eliminating the complexity of managing multiple cryptocurrency positions. Users need only ETH to gain exposure to a professionally managed, diversified portfolio.
+Fortress Finance revolutionizes DeFi investment by eliminating the complexity of managing multiple cryptocurrency positions. Users need only ETH to gain exposure to a professionally managed, diversified portfolio, and they always receive ETH back when redeeming their FORT tokens, regardless of the underlying portfolio composition.
 
 #### Core Investment Flow
 1. **Single Entry Point**: Users deposit ETH into the Fortress vault
-2. **Automatic Diversification**: Contract instantly converts ETH into a balanced portfolio
+2. **Automatic Diversification**: Contract instantly converts ETH into a balanced portfolio (WBTC 65%, WETH 25%, WSOL 10%)
 3. **Token Representation**: Users receive FORT tokens representing their proportional share
-4. **Seamless Redemption**: FORT tokens can be redeemed back to ETH at any time
+4. **Seamless Redemption**: FORT tokens are redeemed back to ETH by automatically selling the proportional asset allocation on DEX markets
 
 #### Technical Implementation
 - **Gas Optimization**: Batch transactions minimize gas costs for portfolio rebalancing
 - **Slippage Protection**: Advanced algorithms ensure optimal execution prices
-- **Liquidity Management**: Maintains sufficient liquidity for redemptions
+- **Liquidity Management**: Maintains 20% reserve for withdrawals at all times
 - **Price Oracle Integration**: Real-time pricing ensures accurate valuations
 
 ### Strategic Asset Allocation
@@ -63,8 +71,8 @@ Our portfolio allocation is based on extensive research into blockchain ecosyste
 
 #### Automated Yield Deployment
 - **Primary Protocols**: Automated liquidity provision to Uniswap V3 and Aave V3
-- **Deployment Ratio**: 80% of TVL deployed for yield generation
-- **Reserve Requirement**: 20% of TVL maintained in contract for withdrawals
+- **Deployment Strategy**: 80% of the underlying portfolio assets (WBTC, WETH, WSOL) deployed for yield generation
+- **Reserve Requirement**: 20% of portfolio assets maintained in contract for withdrawals
 - **Automation**: Fully automated yield optimization and rebalancing
 - **Protocol Selection**: Community-governed selection of approved yield protocols
 
@@ -82,12 +90,48 @@ Our portfolio allocation is based on extensive research into blockchain ecosyste
 - **Gradual Unwinding**: Large withdrawals processed over multiple days
 - **Community Override**: DAO can temporarily adjust limits in emergencies
 
+#### Withdrawal Mechanism
+- **Proportional Asset Sales**: FORT token redemption triggers proportional sales of WBTC, WETH, and WSOL
+- **DEX Market Execution**: Assets sold on Uniswap V3 and other DEXs for optimal pricing
+- **ETH Conversion**: All proceeds automatically converted to ETH for user withdrawal
+- **Single Asset Delivery**: Users always receive ETH, regardless of current portfolio composition
+- **Automated Process**: No manual intervention required for withdrawal execution
+
 #### Risk Mitigation
 - **Protocol Diversification**: Spread across multiple established DeFi protocols
 - **Continuous Monitoring**: Real-time tracking of protocol health and yields
 - **Automated Rebalancing**: Dynamic adjustment based on market conditions
 - **Emergency Procedures**: Rapid withdrawal from yield positions when needed
 - **Audit Requirements**: Regular security audits of all integrated protocols
+
+### Value Accrual Mechanism
+
+#### How Yield Bolsters FORT Token Value
+The automated yield generation system directly enhances the value of existing FORT tokens through a sophisticated value accrual mechanism:
+
+**Direct Value Appreciation**
+- **Yield Reinvestment**: Generated yield from Uniswap V3 and Aave V3 is automatically reinvested into the portfolio
+- **Portfolio Growth**: As the underlying portfolio (WBTC, WETH, WSOL) grows from yield, each FORT token represents a larger share of the total value
+- **Compound Effect**: Reinvested yields generate additional returns, creating exponential growth over time
+- **No Dilution**: New yield is added to the existing portfolio without minting new FORT tokens, increasing the value per token
+
+**Value Distribution Process**
+1. **Yield Collection**: Automated systems collect yield from liquidity provision and lending activities
+2. **Portfolio Rebalancing**: Yield is used to purchase additional WBTC, WETH, and WSOL at current market prices
+3. **Value Accrual**: The increased portfolio value is reflected in the exchange rate between FORT tokens and ETH
+4. **Token Holder Benefit**: Existing FORT token holders automatically benefit from the increased portfolio value
+
+**Transparent Value Tracking**
+- **Real-time Valuation**: Portfolio value is continuously calculated using Chainlink price feeds
+- **Exchange Rate Updates**: FORT token exchange rate updates automatically as portfolio value changes
+- **Yield Attribution**: All yield generated is attributed to the existing token supply
+- **No Token Inflation**: FORT token supply remains constant while underlying value grows
+
+**Long-term Value Creation**
+- **Sustainable Growth**: Yield generation provides consistent, sustainable value appreciation
+- **Market Independence**: Value growth is not dependent on FORT token price speculation
+- **Compound Returns**: Reinvested yields create compound growth over time
+- **Risk-Adjusted Returns**: Diversified yield sources provide stable, risk-adjusted returns
 
 ### Governance and Risk Management
 
@@ -110,7 +154,7 @@ Our portfolio allocation is based on extensive research into blockchain ecosyste
 📋 **[View our comprehensive development roadmap →](./roadmap.md)**
 
 Our roadmap outlines the strategic development path across four phases:
-- **Phase 1 (0-6 months)**: MVP Core with WBTC, WETH, and Gold integration
+- **Phase 1 (0-6 months)**: MVP Core with WBTC, WETH, and WSOL integration
 - **Phase 2 (6-18 months)**: Expansion & Liquidity with multi-strategy diversification  
 - **Phase 3 (18-36 months)**: Decentralization & Governance with DAO implementation
 - **Phase 4 (3-5 years)**: Fortress Reserve Asset positioning as global yield-bearing store of value
@@ -118,11 +162,12 @@ Our roadmap outlines the strategic development path across four phases:
 ## Core Features
 
 ### Investment & Redemption
-- **ETH-Only Interface**: Simplified user experience with single-asset investment
-- **Instant Diversification**: Automatic conversion to balanced multi-asset portfolio
-- **Seamless Redemption**: One-click conversion back to ETH
-- **Gas Optimization**: Batch transactions minimize user costs
-- **Slippage Protection**: Advanced algorithms ensure optimal execution
+- **ETH-Only Interface**: Simplified user experience with single-asset investment and redemption
+- **Instant Diversification**: Automatic conversion to balanced multi-asset portfolio (WBTC 65%, WETH 25%, WSOL 10%)
+- **Proportional Redemption**: FORT tokens redeemed by selling proportional asset allocation on DEX markets
+- **Single Asset Withdrawal**: Users always receive ETH back, regardless of underlying portfolio composition
+- **Gas Optimization**: Batch transactions minimize user costs for both investment and redemption
+- **Slippage Protection**: Advanced algorithms ensure optimal execution prices for both buying and selling
 
 ### Portfolio Management
 - **Dynamic Rebalancing**: Automatic portfolio rebalancing based on target allocations
@@ -140,7 +185,7 @@ Our roadmap outlines the strategic development path across four phases:
 - **Transparent Operations**: All governance activities publicly auditable
 
 ### Yield Generation
-- **Automated Yield Generation**: 80% TVL deployed to Uniswap V3 and Aave V3
+- **Automated Yield Generation**: 80% of portfolio assets deployed to Uniswap V3 and Aave V3
 - **Yield Deployment**: Strategic capital deployment across verified DeFi protocols
 - **Risk Management**: Comprehensive due diligence and risk assessment
 - **Performance Tracking**: Real-time yield and performance monitoring
@@ -183,7 +228,8 @@ Fortress Finance is built on a modular, upgradeable architecture that prioritize
 - **Purpose**: Central ERC20 token representing shares in the Fortress portfolio
 - **Key Functions**:
   - ETH deposit and FORT token minting
-  - FORT token redemption and ETH withdrawal
+  - FORT token redemption with proportional asset sales
+  - Automatic conversion of portfolio assets back to ETH
   - Portfolio rebalancing and asset management
   - Fee collection and distribution
 - **Security Features**: Multi-signature controls, timelock delays, emergency pause
@@ -193,6 +239,8 @@ Fortress Finance is built on a modular, upgradeable architecture that prioritize
 - **Asset Registry**: Maintains list of supported assets and their configurations
 - **Weight Manager**: Handles target allocation percentages and rebalancing triggers
 - **Liquidity Manager**: Ensures sufficient liquidity for redemptions
+- **Withdrawal Processor**: Handles proportional asset sales for FORT token redemptions
+- **DEX Integration**: Manages asset sales on Uniswap V3 and other DEXs
 
 #### 3. Automated Yield System
 - **Protocol Integration**: Direct integration with Uniswap V3 and Aave V3
@@ -294,14 +342,15 @@ The Next.js frontend application is located in the `dapp/` directory. See the [d
 #### FORT Token Utility
 - **Governance Rights**: Voting power proportional to token holdings
 - **Yield Participation**: Share in generated yield from automated DeFi activities
+- **Value Accrual**: Automatic value appreciation through yield reinvestment
 - **Portfolio Representation**: Direct representation of portfolio value
 - **Liquidity Access**: Seamless conversion to underlying assets
 
 #### Fee Structure
-- **Investment Fee**: 0.5% on ETH deposits (covers gas and facilitation costs)
-- **Redemption Fee**: 0.25% on ETH withdrawals (covers gas and slippage)
-- **Management Fee**: 2% annual fee on total portfolio value
-- **Performance Fee**: 20% of excess yield above 10% annual return
+- **Investment Fee**: 0.15% on ETH deposits (covers gas and facilitation costs)
+- **Redemption Fee**: 0.15% on ETH withdrawals (covers gas and slippage)
+- **Management Fee**: 1.5% annual fee on total portfolio value
+- **Performance Fee**: 15% of excess yield above 10% annual return
 
 #### Revenue Generation
 - **DeFi Yield**: Returns from automated liquidity provision and lending
@@ -359,31 +408,6 @@ Our testing approach ensures the highest level of security and reliability throu
 - **Branch Coverage**: >90% branch coverage for decision points
 - **Function Coverage**: 100% coverage of all public and external functions
 - **Integration Coverage**: Complete coverage of all user flows and scenarios
-
-## Deployment
-
-### Smart Contracts
-
-```bash
-# Deploy to localhost
-cd contracts && npm run deploy:local
-
-# Deploy to Sepolia testnet
-cd contracts && npm run deploy:sepolia
-
-# Deploy to mainnet
-cd contracts && npm run deploy:mainnet
-```
-
-### Frontend Application
-
-```bash
-# Build and start production server
-cd dapp && npm run build && npm run start
-
-# Deploy to Vercel (recommended)
-cd dapp && npx vercel --prod
-```
 
 ## License
 
@@ -455,5 +479,3 @@ We welcome contributions from the community! Here's how you can get involved:
 - **Best Practices**: Security and development best practices
 
 For questions or support, please open an issue on GitHub or join our Discord community.
-
-
