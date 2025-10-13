@@ -2,6 +2,10 @@
 
 A production-ready multi-asset yield vault with ETH-only investment/redemption, DAO governance, and automated yield generation. Fortress Finance represents a revolutionary approach to decentralized finance by creating a diversified cryptocurrency portfolio that users can access through a single ETH investment, while maintaining community-driven governance and sustainable yield generation.
 
+## 🚀 Join the Community
+
+**💬 [Join our Discord](https://discord.gg/qQyBXD4m)** - Connect with the community, get support, and participate in governance discussions!
+
 ## Core Philosophy
 
 Fortress Finance is built on the principle that **diversification is the cornerstone of sustainable wealth creation**. Rather than forcing users to manage multiple cryptocurrency positions, we provide a single-entry point (ETH) that automatically diversifies across the three most promising blockchain ecosystems: Bitcoin, Ethereum, and Solana.
@@ -333,6 +337,31 @@ The smart contracts are located in the `contracts/` directory. The project inclu
 - **`FortressTokenUpgradeable.sol`**: UUPS upgradeable implementation with all core functionality
 - **`FortressTokenV2.sol`**: Version 2 with enhanced fee tracking and volume analytics
 - **`FortressTokenV3.sol`**: Version 3 with advanced governance and user analytics
+
+### Token Supply Management
+
+#### Maximum Supply Limit
+The FORT token has a **maximum supply of 1 billion tokens** (`MAX_SUPPLY = 1_000_000_000 * 10**18`). This limit is enforced in the `invest()` function to prevent unlimited token inflation and maintain the economic integrity of the protocol.
+
+**Why 1 Billion Tokens?**
+1. **Industry Standard**: 1 billion is a common maximum supply used by many successful DeFi tokens (Uniswap's UNI, Chainlink's LINK)
+2. **Economic Flexibility**: Allows token prices to range from very small ($0.001) to very large ($1000+) while maintaining reasonable market cap ranges
+3. **Psychological Appeal**: A round, easily understandable number that feels substantial but not infinite
+4. **Precision**: 18 decimals with 1 billion tokens provides sufficient granularity for all calculations
+
+**Implementation Details:**
+- The `MAX_SUPPLY` constant is defined in all contract versions
+- Enforcement occurs in the `invest()` function: `require(totalSupply() + fortAmount <= MAX_SUPPLY, "Maximum supply exceeded");`
+- This check happens **before** minting tokens, ensuring no supply overflow
+- The limit is preserved across contract upgrades (V1 → V2 → V3)
+- Users can still redeem tokens when at maximum supply
+- New investments become possible again after redemptions reduce total supply
+
+**Economic Implications:**
+- Provides a clear upper bound for token supply, preventing hyperinflation
+- Creates scarcity value as the protocol approaches maximum capacity
+- Maintains predictable economics for long-term planning
+- Ensures the protocol remains sustainable even with massive adoption
 
 ### Deployment Options
 
