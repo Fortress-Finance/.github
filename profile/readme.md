@@ -18,10 +18,9 @@ Our strategy is designed to capture the long-term value appreciation of the thre
 
 ## Project Structure
 
-This repository contains two main components:
+This repository contains the smart contract implementation:
 
 - **`contracts/`** - Smart contracts and deployment scripts
-- **`dapp/`** - Next.js frontend application for interacting with the vault
 
 
 ## Portfolio Strategy
@@ -222,6 +221,32 @@ Our roadmap outlines the strategic development path across four phases:
 
 Fortress Finance is built on a modular, upgradeable architecture that prioritizes security, efficiency, and user experience. The system consists of multiple interconnected smart contracts that work together to provide seamless portfolio management and yield generation.
 
+#### Upgradeable Contract Architecture
+
+Fortress Finance implements the **UUPS (Universal Upgradeable Proxy Standard)** pattern, ensuring that the protocol can evolve and improve over time while maintaining user funds and state integrity. This upgradeable architecture provides several critical benefits:
+
+**Why Upgradeability is Essential for Fortress Finance:**
+
+1. **Security Enhancements**: Ability to patch vulnerabilities and implement security improvements without requiring users to migrate funds
+2. **Feature Evolution**: Continuous improvement of yield strategies, governance mechanisms, and user experience
+3. **Protocol Adaptation**: Response to changing market conditions and new DeFi opportunities
+4. **Asset Protection**: Guaranteed preservation of user assets and portfolio state during upgrades
+5. **Future-Proofing**: Ability to integrate new assets, strategies, and blockchain ecosystems
+
+**Upgrade Safety Measures:**
+- **State Preservation**: All user balances, portfolio allocations, and transaction history are preserved during upgrades
+- **Asset Protection**: User funds are never at risk during the upgrade process
+- **Governance Control**: Only the protocol owner can authorize upgrades, with future DAO governance planned
+- **Comprehensive Testing**: Extensive test suites ensure upgrades maintain all existing functionality
+- **Transparent Process**: All upgrades are publicly verifiable and auditable
+
+**Technical Implementation:**
+- **UUPS Pattern**: Uses OpenZeppelin's UUPS upgradeable proxy pattern
+- **Implementation Contracts**: Separate implementation contracts for different versions
+- **Proxy Storage**: All state variables stored in the proxy contract, not implementation
+- **Function Preservation**: All existing functions continue to work after upgrades
+- **New Features**: Upgrades can add new functions without breaking existing ones
+
 ### Core Contract Architecture
 
 #### 1. FortressToken (Main Vault Contract)
@@ -296,21 +321,56 @@ Fortress Finance is built on a modular, upgradeable architecture that prioritize
 
 ## Smart Contracts
 
-The smart contracts are located in the `contracts/` directory. See the [contracts README](./contracts/README.md) for detailed information about:
+The smart contracts are located in the `contracts/` directory. The project includes both standard and upgradeable versions:
+
+### Contract Versions
+
+#### Standard Contracts
+- **`FortressToken.sol`**: Standard implementation with all core functionality
+- **`mocks/`**: Mock contracts for testing (MockERC20, MockChainlinkPriceFeed, MockStrategy)
+
+#### Upgradeable Contracts
+- **`FortressTokenUpgradeable.sol`**: UUPS upgradeable implementation with all core functionality
+- **`FortressTokenV2.sol`**: Version 2 with enhanced fee tracking and volume analytics
+- **`FortressTokenV3.sol`**: Version 3 with advanced governance and user analytics
+
+### Deployment Options
+
+#### Standard Deployment
+```bash
+npm run deploy
+```
+
+#### Upgradeable Deployment
+```bash
+npx hardhat run scripts/deploy-upgradeable.js --network <network>
+```
+
+#### Contract Upgrade
+```bash
+npx hardhat run scripts/upgrade.js --network <network>
+```
+
+### Testing
+
+#### Standard Tests
+```bash
+npm test
+```
+
+#### Upgrade Tests
+```bash
+npx hardhat test test/UpgradeTest.test.js
+```
+
+See the [contracts README](./contracts/README.md) for detailed information about:
 
 - Contract architecture
 - Deployment instructions
 - Testing procedures
 - Security considerations
+- Upgrade procedures
 
-## Frontend Application
-
-The Next.js frontend application is located in the `dapp/` directory. See the [dapp README](./dapp/README.md) for information about:
-
-- Application features
-- Development setup
-- Deployment instructions
-- User interface components
 
 ## Security Considerations
 
@@ -425,7 +485,6 @@ MIT License - see LICENSE file for details
 - **Smart Contract Development**: Building the core FortressToken and supporting contracts
 - **Testing Implementation**: Comprehensive test suite development and validation
 - **Security Auditing**: Third-party security audits and code reviews
-- **Frontend Development**: User-friendly interface for portfolio management
 
 ### Phase 3: Launch Preparation
 - **Testnet Deployment**: Extensive testing on testnet environments
