@@ -2,10 +2,6 @@
 
 A production-ready multi-asset yield vault with ETH-only investment/redemption, DAO governance, and automated yield generation. Fortress Finance represents a revolutionary approach to decentralized finance by creating a diversified cryptocurrency portfolio that users can access through a single ETH investment, while maintaining community-driven governance and sustainable yield generation.
 
-## 🚀 Join the Community
-
-**💬 [Join our Discord](https://discord.gg/qQyBXD4m)** - Connect with the community, get support, and participate in governance discussions!
-
 ## Core Philosophy
 
 Fortress Finance is built on the principle that **diversification is the cornerstone of sustainable wealth creation**. Rather than forcing users to manage multiple cryptocurrency positions, we provide a single-entry point (ETH) that automatically diversifies across the three most promising blockchain ecosystems: Bitcoin, Ethereum, and Solana.
@@ -567,3 +563,4 @@ We welcome contributions from the community! Here's how you can get involved:
 - **Best Practices**: Security and development best practices
 
 For questions or support, please open an issue on GitHub or join our Discord community.
+
